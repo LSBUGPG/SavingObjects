@@ -94,7 +94,11 @@ public class Level : MonoBehaviour
         bool spawn = Input.GetMouseButtonUp(1);
         if (spawn)
         {
-            Vector3 position = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
+            float z = 10f;
+            Vector3 position = camera.ScreenToWorldPoint(new Vector3(x, y, z));
+            position.y = Mathf.Max(2f, position.y);
             Quaternion orientation = Quaternion.identity;
             CreateNewBlock(position, orientation);
         }
